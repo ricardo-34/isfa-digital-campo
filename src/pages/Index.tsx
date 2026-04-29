@@ -1,16 +1,51 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/isfa/Navbar";
+import Hero from "@/components/isfa/Hero";
+import Nosotros from "@/components/isfa/Nosotros";
+import Oferta from "@/components/isfa/Oferta";
+import Proyectos from "@/components/isfa/Proyectos";
+import Comunidad from "@/components/isfa/Comunidad";
+import Galeria from "@/components/isfa/Galeria";
+import Academico from "@/components/isfa/Academico";
+import Contacto from "@/components/isfa/Contacto";
+import Footer from "@/components/isfa/Footer";
+import { useEffect } from "react";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  useEffect(() => {
+    document.title = "ISFA · Institución Educativa San Francisco de Asís — Linares, Nariño";
+    const setMeta = (name: string, content: string) => {
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute("name", name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+    setMeta(
+      "description",
+      "Institución Educativa San Francisco de Asís (ISFA): educación rural con enfoque agropecuario en Linares, Nariño. Preescolar, primaria, secundaria y media técnica."
+    );
+    const linkCanonical = document.querySelector('link[rel="canonical"]') || document.createElement("link");
+    linkCanonical.setAttribute("rel", "canonical");
+    linkCanonical.setAttribute("href", window.location.origin + "/");
+    if (!linkCanonical.parentNode) document.head.appendChild(linkCanonical);
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <main>
+      <Navbar />
+      <Hero />
+      <Nosotros />
+      <Oferta />
+      <Proyectos />
+      <Comunidad />
+      <Galeria />
+      <Academico />
+      <Contacto />
+      <Footer />
+    </main>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
